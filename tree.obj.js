@@ -72,3 +72,14 @@ function Place() {
   this.latitude = -360.0;
   this.longitude = -360.0;
 }
+
+function Birth(date, loc) {
+  this.date = date;
+  this.location = loc;
+}
+
+function Death(date, loc) {
+  this.date = date;
+  this.location = loc;
+}
+
