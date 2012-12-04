@@ -51,3 +51,12 @@ Marriage.prototype.getSpouse = function(s) {
   }
   return null;
 };
+
+function Divorce(marriage, date) {
+  this.spouse1 = marriage.spouse1;
+  this.spouse2 = marriage.spouse2;
+  this.marriageDate = marriage.date;
+  this.divorceDate = date;
+}
+
+Divorce.prototype.getSpouse = Marriage.prototype.getSpouse;
