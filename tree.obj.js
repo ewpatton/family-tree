@@ -12,22 +12,23 @@ function Person() {
   this.deathInfo = null;
   this.placesLived = [];
   this.children = [];
+
+  // parents is the collection of individuals
+  // (were) legally bound to care for this 
+  // individual as a child
+  this.parents = [];
+
+  // biological mother and father
   this.mother = null;
   this.father = null;
+
   this.adopted = null;
   this.image = null;
 
   this.getSiblings = function() {
     var siblings = {};
-    var parents = [];
-    if(this.mother != null) {
-      parents.append(this.mother);
-    }
-    if(this.father != null) {
-      parents.append(this.father);
-    }
-    for(var i=0;i<parents.length;i++) {
-      var parent = parents[i];
+    for(var i=0;i<this.parents.length;i++) {
+      var parent = this.parents[i];
       for(var j=0;j<parent.children.length;i++) {
 	siblings[parent.children[i].uri] = parent.children[i];
       }
