@@ -60,3 +60,8 @@ function Divorce(marriage, date) {
 }
 
 Divorce.prototype.getSpouse = Marriage.prototype.getSpouse;
+
+function Occupation() {
+  this.label = "";
+  this.typeUri = "";
+}
