@@ -65,3 +65,10 @@ function Occupation() {
   this.label = "";
   this.typeUri = "";
 }
+
+function Place() {
+  this.uri = "";
+  this.label = "";
+  this.latitude = -360.0;
+  this.longitude = -360.0;
+}
