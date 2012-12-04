@@ -35,3 +35,19 @@ function Person() {
     return siblings;
   };
 }
+
+function Marriage(s1, s2, date) {
+  this.spouse1 = s1;
+  this.spouse2 = s2;
+  this.date = date;
+
+  this.getSpouse = function(s) {
+    if(this.spouse1 == s) {
+      return this.spouse2;
+    }
+    if(this.spouse2 == s) {
+      return this.spouse1;
+    }
+    return null;
+  };
+}
