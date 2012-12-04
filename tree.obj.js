@@ -84,3 +84,7 @@ function Death(date, loc) {
   this.location = loc;
 }
 
+function Adoption(date) {
+  this.date = date;
+  this.parents = [];
+}
