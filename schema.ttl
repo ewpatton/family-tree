@@ -1,0 +1,49 @@
+@base <http://www.evanpatton.com/family/schema.ttl#> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.evanpatton.com/family/schema.ttl#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:middleName a owl:DatatypeProperty ;
+    rdfs:label "Middle Name" .
+
+:maidenName a owl:DatatypeProperty ;
+    rdfs:label "Maiden Name" .
+
+:AdoptedPerson a owl:Class ;
+    rdfs:label "Adopted Person" .
+
+:adoptedParent a owl:ObjectProperty ;
+    rdfs:label "Adopted Parent" ;
+    rdfs:domain :AdoptedPerson .
+
+:Occupation a owl:Class ;
+    rdfs:subClassOf dbpedia:PersonFunction ;
+    rdfs:label "Occupation" .
+
+:PublicSectorOccupation a owl:Class ;
+    rdfs:subClassOf :Occupation ;
+    rdfs:label "Public Sector Occupation" .
+
+:StateDeptOccupation a owl:Class ;
+    rdfs:subClassOf :StateDeptOccupation ;
+    rdfs:label "State Department Occupation" .
+
+:Housewife a owl:Class ;
+    rdfs:subClassOf :Occupation ;
+    rdfs:label "Housewife" .
+
+:Mechanic a owl:Class ;
+    rdfs:subClassOf :Occupation ;
+    rdfs:label "Mechanic" .
+
+:ServiceManager a owl:Class ;
+    rdfs:subClassOf :Manager ;
+    rdfs:label "Service Manager" .
+
+:Manager a owl:Class ;
+    rdfs:subClassOf :Occupation ;
+    rdfs:label "Manager" .

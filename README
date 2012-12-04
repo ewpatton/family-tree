@@ -1,0 +1,12 @@
+This JavaScript code queries a SPARQL endpoint containing genealogy
+data in a number of different Semantic Web ontologies, including the
+Biography ontology [1], dbpedia [2], Friend of a Friend [3], and
+Dublin Core [4]. The schema.ttl file introduces some additional
+properties to complement the existing ontologies.
+
+This repository includes d3.js and jQuery 1.8.2.
+
+[1] http://vocab.org/bio/0.1/.html
+[2] http://dbpedia.org/ontology/
+[3] http://xmlns.com/foaf/spec/
+[4] http://dublincore.org/schemas/rdfs/
