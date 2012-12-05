@@ -34,6 +34,23 @@
     },
 
     "getMarriages": function(continuation) {
+      var query = "";
+      query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
+      query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
+      query += "PREFIX dc: <http://purl.org/dc/terms/>\n";
+      query += "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n";
+      query += "SELECT ?spouse1 ?spouse2 ?marryDate ?divorceDate ?loc ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "?bn a bio:Marriage ; bio:partner ?spouse1 , ?spouse2 .\n";
+      query += "FILTER(?spouse1 != ?spouse2 && xsd:string(?spouse1) < xsd:string(?spouse2))\n";
+      query += "OPTIONAL { ?bn dc:date ?marriageDate }\n";
+      query += "OPTIONAL { ?bn bio:place ?loc }\n";
+      query += "OPTIONAL { [ a bio:Divorce ; bio:partner ?spouse1 , ?spouse2 ; dc:date ?divorceDate ] }\n";
+      query += "}";
+      Endpoint.query(query, continuation);
     },
 
     "getOccupations": function(continuation) {
