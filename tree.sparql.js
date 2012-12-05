@@ -58,6 +58,7 @@
       query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
       query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
       query += "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n";
+      query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
       query += "SELECT ?uri ?occupationUri ?label ?comment ?loc ";
       if(graph != null) {
 	query += "FROM <"+graph+"> ";
