@@ -85,6 +85,28 @@
       query += "OPTIONAL { ?img dc:date ?date }\n";
       query += "} ORDER BY ?date";
       Endpoint.query(query, continuation);
+    },
+
+    "getLocations": function(continuation) {
+      var query = "";
+      query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
+      query += "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n";
+      query += "PREFIX v: <http://www.w3.org/2006/vcard/ns#>\n";
+      query += "PREFIX wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#>\n";
+      query += "SELECT ?uri ?label ?lat ?lng ?addrSt ?addrTown ?addrState ?addrZip ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "?uri a dbpedia:place .\n";
+      query += "OPTIONAL { ?uri rdfs:label ?label }\n";
+      query += "OPTIONAL { ?uri wgs:lat ?lat ; wgs:long ?lng }\n";
+      query += "OPTIONAL { ?uri v:adr [ v:street-address ?addrSt ] }\n";
+      query += "OPTIONAL { ?uri v:adr [ v:locality ?addrTown ] }\n";
+      query += "OPTIONAL { ?uri v:adr [ v:region ?addrState ] }\n";
+      query += "OPTIONAL { ?uri v:adr [ v:postal-code ?addrZip ] }\n";
+      query += "}";
+      Endpoint.query(query, continuation);
     }
 
   };
