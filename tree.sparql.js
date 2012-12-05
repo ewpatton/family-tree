@@ -54,7 +54,23 @@
     },
 
     "getOccupations": function(continuation) {
-    }
+      var query = "";
+      query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
+      query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
+      query += "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n";
+      query += "SELECT ?uri ?occupationUri ?label ?comment ?loc ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "?uri a foaf:Person ; dbpedia:occupation ?bn .\n";
+      query += "?bn a ?occupationUri .\n";
+      query += "OPTIONAL { ?occupationUri rdfs:label ?label }\n";
+      query += "OPTIONAL { ?bn rdfs:comment ?comment }\n";
+      query += "OPTIONAL { ?bn bio:place ?loc }\n";
+      query += "}";
+      Endpoint.query(query, continuation);
+    },
 
     "getImages": function(continuation) {
       var query = "";
