@@ -122,6 +122,25 @@
       query += "?uri a foaf:Person ; dbpedia:residence ?loc\n";
       query += "}";
       Endpoint.query(query, continuation);
+    },
+
+    "getAdoptions": function(continuation) {
+      var query = "";
+      query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
+      query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
+      query += "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n";
+      query += "SELECT ?uri ?date ?parent1 ?parent2 ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "?uri a foaf:Person ; bio:event ?bn .\n";
+      query += "?bn a bio:Adoption .\n";
+      query += "OPTIONAL { ?bn bio:parent ?parent1, ?parent2 \n";
+      query += "FILTER(?parent1 != ?parent2 && xsd:string(?parent1) < xsd:string(?parent2))\n";
+      query += "}\n";
+      query += "}";
+      Endpoint.query(query, continuation);
     }
 
   };
