@@ -108,6 +108,20 @@
       query += "OPTIONAL { ?uri v:adr [ v:postal-code ?addrZip ] }\n";
       query += "}";
       Endpoint.query(query, continuation);
+    },
+
+    "getResidences": function(continuation) {
+      var query = "";
+      query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
+      query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
+      query += "SELECT ?uri ?loc ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "?uri a foaf:Person ; dbpedia:residence ?loc\n";
+      query += "}";
+      Endpoint.query(query, continuation);
     }
 
   };
