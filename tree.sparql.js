@@ -56,5 +56,20 @@
     "getOccupations": function(continuation) {
     }
 
+    "getImages": function(continuation) {
+      var query = "";
+      query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
+      query += "PREFIX dc: <http://purl.org/dc/terms/>\n";
+      query += "SELECT ?uri ?img ?date ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "?uri a foaf:Person ; foaf:depiction ?img .\n";
+      query += "OPTIONAL { ?img dc:date ?date }\n";
+      query += "} ORDER BY ?date";
+      Endpoint.query(query, continuation);
+    }
+
   };
 })();
