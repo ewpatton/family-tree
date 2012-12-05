@@ -11,7 +11,8 @@
       query += "PREFIX gene: <http://www.evanpatton.com/family/schema.ttl>\n";
       query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
       query += "PREFIX dc: <http://purl.org/dc/terms/>\n";
-      query += "SELECT ?uri ?first ?middle ?maiden ?last ?birth ?birthLoc ?death ?deathLoc ?mother ?father ";
+      query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
+      query += "SELECT ?uri ?first ?middle ?maiden ?last ?birth ?birthLoc ?death ?deathLoc ?deathCause ?deathComment ?mother ?father ";
       if(graph != null) {
 	query += "FROM <"+graph+"> ";
       }
@@ -26,7 +27,9 @@
       query += "OPTIONAL { ?uri bio:death ?deathBN .\n";
       query += "OPTIONAL { ?deathBN dc:date ?death }\n";
       query += "OPTIONAL { ?deathBN bio:place ?deathLoc }\n";
+      query += "OPTIONAL { ?deathBN rdfs:comment ?deathComment }\n";
       query += "}\n";
+      query += "OPTIONAL { ?uri dbpedia:deathCause ?deathCause }\n";
       query += "OPTIONAL { ?uri bio:mother ?mother }\n";
       query += "OPTIONAL { ?uri bio:father ?father }\n";
       query += "}";
