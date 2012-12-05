@@ -144,6 +144,21 @@
       query += "}\n";
       query += "}";
       Endpoint.query(query, continuation);
+    },
+
+    "getDeathCauses": function(continuation) {
+      var query = "";
+      query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
+      query += "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n";
+      query += "SELECT DISTINCT ?uri ?label ";
+      if(graph != null) {
+	query += "FROM <"+graph+"> ";
+      }
+      query += "WHERE {\n";
+      query += "[] dbpedia:deathCause ?uri .\n";
+      query += "OPTIONAL { ?uri rdfs:label ?label }\n";
+      query += "}";
+      Endpoint.query(query, continuation);
     }
 
   };
