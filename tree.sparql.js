@@ -8,7 +8,7 @@
     "getPeople": function(continuation) {
       var query = "";
       query += "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n";
-      query += "PREFIX gene: <http://www.evanpatton.com/family/schema.ttl>\n";
+      query += "PREFIX gene: <http://www.evanpatton.com/family/schema.ttl#>\n";
       query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
       query += "PREFIX dc: <http://purl.org/dc/terms/>\n";
       query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
