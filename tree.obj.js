@@ -1,8 +1,8 @@
 function Person() {
   this.uri = "";
   this.firstName = "";
-  this.middleName = "";
-  this.maidenName = "";
+  this.middleName = null;
+  this.maidenName = null;
   this.lastName = "";
   this.suffix = "";
   this.gender = "";

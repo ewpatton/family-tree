@@ -113,11 +113,86 @@
 	  sparqlResultsToPerson(bindings[i]);
 	}
 	processPeople();
+	continuation.call(window);
       });
     },
 
     "getPeople": function(continuation) {
       return people;
+    },
+
+    "getPersonImage": function(uri) {
+      var person = people[uri];
+      if(person == undefined) {
+	return null;
+      }
+      // TODO: complete function
+      return null;
+    },
+
+    "getPersonFullName": function(uri) {
+      var person = people[uri];
+      var name = "";
+      if(person != undefined) {
+	name += person.firstName;
+	if(person.middleName != null) {
+	  name += " "+person.middleName;
+	}
+	if(person.maidenName != null) {
+	  name += " ("+person.maidenName+")";
+	}
+	name += " "+person.lastName;
+      }
+      return name;
+    },
+
+    "getPersonBirthday": function(uri) {
+      var person = people[uri];
+      if(person == undefined) {
+	return "";
+      }
+      if(person.birthInfo == null) {
+	return "";
+      }
+      return person.birthInfo.date;
+    },
+
+    "getPersonBirthLoc": function(uri) {
+      var person = people[uri];
+      if(person == undefined) {
+	return null;
+      }
+      var loc = person.birthInfo.loc;
+      loc = loc && locations[loc];
+      return loc;
+    },
+
+    "getPersonDeathday": function(uri) {
+      return null;
+    },
+
+    "getPersonDeathLoc": function(uri) {
+      return null;
+    },
+
+    "getPersonCareer": function(uri) {
+      return "Computer Scientist";
+    },
+
+    "getPersonResidenceCount": function(uri) {
+      return 0;
+    },
+
+    "getPersonResidenceLabel": function(uri, count) {
+      return null;
+    },
+
+    "getPersonGender": function(uri) {
+      var person = people[uri];
+      if(person == undefined) {
+	return null;
+      }
+      return person.gender;
     }
   };
 })();

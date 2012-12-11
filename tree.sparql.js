@@ -45,7 +45,7 @@
       query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
       query += "PREFIX dc: <http://purl.org/dc/terms/>\n";
       query += "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n";
-      query += "SELECT ?spouse1 ?spouse2 ?marryDate ?divorceDate ?loc ";
+      query += "SELECT ?spouse1 ?spouse2 ?marriageDate ?divorceDate ?loc ";
       if(graph != null) {
 	query += "FROM <"+graph+"> ";
       }

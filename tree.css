@@ -1,0 +1,106 @@
+* {
+    font-size: 14pt;
+    font-family: "Baskerville Old Face",Times,Serif;
+}
+
+svg {
+    font-size: 11pt;
+}
+
+.living rect {
+    stroke: black;
+    stroke-width: 0.5;
+}
+
+.male rect {
+    fill: lightblue;
+}
+
+.female rect {
+    fill: lightpink;
+}
+
+g.connector {
+    stroke: black;
+    stroke-width; 2;
+}
+
+g.connector circle {
+    cursor: pointer;
+    fill: white;
+}
+
+g.connector.nochildren circle {
+    display: none;
+}
+
+svg.card {
+    overflow: hidden;
+    width: 250px;
+    height: 73px;
+}
+
+div.lightbox {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    opacity: 0.7;
+}
+
+div.box-wrapper {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+div.box-location {
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+}
+
+div.box {
+    top: -50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 100px;
+    background-color: darkgray;
+    border-radius: 18px;
+    margin-top: -50px;
+    box-shadow: 0px 2px 15px #444;
+    position: relative;
+}
+
+div.box div.label {
+    top: 25px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+div.box div.progressBarBack {
+    border: 1px solid black;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    top: 60px;
+    position: absolute;
+    height: 6px;
+}
+
+div.box div.progressBar {
+    background-color: navy;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -10,10 +10,16 @@
     <script type="text/javascript" src="tree.obj.js"></script>
     <script type="text/javascript" src="tree.sparql.js"></script>
     <script type="text/javascript" src="tree.controller.js"></script>
+    <script type="text/javascript" src="tree.view.js"></script>
     <script type="text/javascript" src="tree.js"></script>
     <link rel="stylesheet" href="tree.css" type="text/css" />
   </head>
   <body>
-    <div id="chart"></div>
+    <svg:svg id="chart" xmlns:svg="http://www.w3.org/2000/svg"></svg:svg>
+    <div class="lightbox"></div>
+    <div class="box-wrapper"><div class="box-location"><div class="box">
+	  <div class="label">Loading people...</div>
+	  <div class="progressBarBack"><div class="progressBar"></div></div>
+</div></div></div>
   </body>
 </html>
