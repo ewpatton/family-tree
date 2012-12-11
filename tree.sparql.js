@@ -12,7 +12,9 @@
       query += "PREFIX bio: <http://purl.org/vocab/bio/0.1/>\n";
       query += "PREFIX dc: <http://purl.org/dc/terms/>\n";
       query += "PREFIX dbpedia: <http://dbpedia.org/ontology/>\n";
-      query += "SELECT ?uri ?first ?middle ?maiden ?last ?birth ?birthLoc ?death ?deathLoc ?deathCause ?deathComment ?mother ?father ";
+      query += "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n";
+      query += "PREFIX con: <http://www.w3.org/2000/10/swap/pim/contact#>\n";
+      query += "SELECT ?uri ?first ?middle ?maiden ?last ?suffix ?birth ?birthLoc ?death ?deathLoc ?deathCause ?deathComment ?mother ?father ";
       if(graph != null) {
 	query += "FROM <"+graph+"> ";
       }
@@ -20,6 +22,7 @@
       query += "?uri a foaf:Person ; foaf:givenName ?first ; foaf:familyName ?last .\n";
       query += "OPTIONAL { ?uri gene:middleName ?middle }\n";
       query += "OPTIONAL { ?uri gene:maidenName ?maiden }\n";
+      query += "OPTIONAL { ?uri con:personalSuffix ?suffix }\n";
       query += "OPTIONAL { ?uri bio:birth ?birthBN .\n";
       query += "OPTIONAL { ?birthBN dc:date ?birth }\n";
       query += "OPTIONAL { ?birthBN bio:place ?birthLoc }\n";

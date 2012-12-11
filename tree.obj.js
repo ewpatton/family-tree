@@ -88,3 +88,8 @@ function Adoption(date) {
   this.date = date;
   this.parents = [];
 }
+
+function DeathCause() {
+  this.uri = null;
+  this.label = null;
+}
