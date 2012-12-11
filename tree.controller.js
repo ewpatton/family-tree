@@ -112,7 +112,12 @@
 	for(var i=0;i<bindings.length;i++) {
 	  sparqlResultsToPerson(bindings[i]);
 	}
+	processPeople();
       });
+    },
+
+    "getPeople": function(continuation) {
+      return people;
     }
   };
 })();
