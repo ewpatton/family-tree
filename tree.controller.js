@@ -14,8 +14,8 @@
       people[uri] = person;
       person.uri = uri;
     }
-    person.firstName = person.first.value;
-    person.lastName = person.last.value;
+    person.firstName = b.first.value;
+    person.lastName = b.last.value;
     if(b.middle != undefined) {
       person.middleName = b.middle.value;
     }
@@ -55,7 +55,7 @@
       }
       if(b.deathCause != undefined) {
 	cause = b.deathCause.value;
-	if(deathCauses[cuase] == undefined) {
+	if(deathCauses[cause] == undefined) {
 	  var tmp = new DeathCause();
 	  tmp.uri = cause;
 	  deathCauses[cause] = tmp;
@@ -79,7 +79,7 @@
 	people[mother].uri = mother;
 	person.mother = people[mother];
       }
-      person.mother.children.append(person);
+      person.mother.children.push(person);
     }
     if(b.father != undefined) {
       var father = b.father.value;
@@ -91,17 +91,18 @@
 	people[father].uri = father;
 	person.father = people[father];
       }
-      person.father.children.append(person);
+      person.father.children.push(person);
     }
     if(person.mother != null) {
-      person.parents.append(person.mother);
+      person.parents.push(person.mother);
     }
     if(person.father != null) {
-      person.parents.append(person.father);
+      person.parents.push(person.father);
     }
   };
 
   var processPeople = function() {
+    
   };
 
   window["Controller"] = {
